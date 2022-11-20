@@ -23,9 +23,12 @@ if uploaded_file is not None:
 
     if st.sidebar.button("Show Analysis"):
         st.title("Top Statistics")
+        st.markdown("***")
 
         num_messages, total_words, num_media_messages, links = helper.fetch_stats(selected_user, df)
         col1, col2, col3, col4 = st.columns(4)
+        st.markdown("***")
+
         with col1:
             st.header('Total Messages')
             st.title(num_messages)
@@ -49,12 +52,16 @@ if uploaded_file is not None:
         plt.xticks(rotation='vertical')
         st.pyplot(fig)
 
+        st.markdown("***")
+
         st.title("Daily Timeline")
         daily_timeline = helper.daily_timeline(selected_user, df)
         fig, ax = plt.subplots()
         ax.plot(daily_timeline['only_date'], daily_timeline['message'], color='black')
         plt.xticks(rotation='vertical')
         st.pyplot(fig)
+
+        st.markdown("***")
 
         st.title("Activity Map")
         col1, col2 = st.columns(2)
@@ -75,6 +82,8 @@ if uploaded_file is not None:
             plt.xticks(rotation='vertical')
             st.pyplot(fig)
 
+        st.markdown("***")
+
         st.title("Hourly activity heatmap")
         activity_heatmap = helper.activity_heatmap(selected_user, df)
         fig, ax = plt.subplots()
@@ -82,6 +91,9 @@ if uploaded_file is not None:
         st.pyplot(fig)
 
         if selected_user == 'Overall':
+
+            st.markdown("***")
+
             st.title('Most active users')
             x, new_df = helper.most_active_users(df)
             fig, ax = plt.subplots()
@@ -94,12 +106,15 @@ if uploaded_file is not None:
                 st.pyplot(fig)
             with col2:
                 st.dataframe(new_df)
+        st.markdown("***")
 
         st.title('Wordcloud')
         df_wc = helper.create_wordcloud(selected_user, df)
         fig, ax = plt.subplots()
         ax.imshow(df_wc)
         st.pyplot(fig)
+
+        st.markdown("***")
 
         st.title('Most Used Words')
         most_common_df = helper.most_common_words(selected_user, df)
@@ -109,6 +124,8 @@ if uploaded_file is not None:
         st.pyplot(fig)
 
         emoji_df = helper.emoji_helper(selected_user, df)
+        st.markdown("***")
+
         st.title("Emoji analysis")
 
         col1, col2 = st.columns(2)
