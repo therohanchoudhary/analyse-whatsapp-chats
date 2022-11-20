@@ -1,8 +1,9 @@
- emoji==2.2.0
+emoji==2.2.0
 matplotlib==3.6.2
 numpy==1.23.4
 pandas==1.5.1
 seaborn==0.12.1
 streamlit==1.14.0
+transformers==4.24.0
 urlextract==1.7.1
 wordcloud==1.8.2.2

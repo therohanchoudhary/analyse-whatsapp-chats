@@ -4,7 +4,8 @@ import helper
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-st.sidebar.title("Whatsapp Chat Analyzer")
+st.sidebar.header("Whatsapp Chat Analyzer")
+st.sidebar.subheader("Created by [**Rohan Choudhary**](%s)" % 'https://www.linkedin.com/in/rohanchoudhary12/')
 uploaded_file = st.sidebar.file_uploader("Choose a file")
 
 if uploaded_file is not None:
@@ -118,3 +119,18 @@ if uploaded_file is not None:
             fig, ax = plt.subplots()
             ax.pie(emoji_df[1].head(), labels=emoji_df[0].head(), autopct="%0.2f")
             st.pyplot(fig)
+else:
+    st.subheader("Please upload txt file by following below steps:")
+    st.markdown("- Click on the chat and open it.")
+    st.markdown("- Click 3 dots icon present at top right of chat screen.")
+    st.markdown("- Click export chat.")
+    st.markdown("- Choose without media and download txt file.")
+    st.markdown("- Now upload it.")
+
+st.markdown('''
+<style>
+[data-testid="stMarkdownContainer"] ul{
+    list-style-position: inside;
+}
+</style>
+''', unsafe_allow_html=True)
